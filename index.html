@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #1E90FF;
+            color: #fff;
+            box-shadow: 4px 4px 0 #000;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 0.3rem;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: #000;
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            background-color: #f2f2f2;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 3px 3px 0 #000;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        nav a:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 #000;
+        }
+
+        .menu-active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            position: absolute;
+            top: 100%;
+            right: 2rem;
+            background-color: #1E90FF;
+            padding: 1rem;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.menu-active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+        .hero-section {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border: 8px solid #1E90FF;
+            box-shadow: 8px 8px 0 #000;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .welcome-text {
+            margin: 2rem auto;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(90deg, red, magenta, blue, cyan, blue, magenta, red);
+            background-size: 400%;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 3px 3px 0 #000;
+            display: inline-block;
+            animation: glow 10s infinite, move 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                background-position: 10% 0%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(10px) rotate(-2deg);
+            }
+            50% {
+                transform: translateX(50px) rotate(2deg);
+            }
+            100% {
+                transform: translateX(-10px) rotate(-2deg);
+            }
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 2rem;
+            border: 2px solid #1E90FF;
+            box-shadow: 4px 4px 0 #000;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .content h1 {
+            margin-bottom: 1rem;
+        }
+
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-top: 2px solid #1E90FF;
+            border-bottom: 2px solid #1E90FF;
+            scrollbar-width: thin;
+            scrollbar-color: #1E90FF #f2f2f2;
+        }
+
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 300px;
+            border: 4px solid #1E90FF;
+            border-radius: 8px;
+            box-shadow: 4px 4px 0 #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-item {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: 150px;
+            }
+        }
+
+        footer {
+            background-color: #1E90FF;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            border-top: 4px solid #000;
+            box-shadow: 0 -4px 0 #000;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 4px solid #1E90FF;
+            border-radius: 12px;
+            box-shadow: 8px 8px 0 #000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">My Website</div>
+        <div class="menu-toggle" id="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="menu" id="nav">
+            <a href="indexx.html">Home</a>
+            <a href="about.html">Produk</a>
+            <a href="#">Komunitas</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <img src="rabit.jpg" alt="Hero Image" class="hero-image">
+    </div>
+
+    <!-- Welcome Text -->
+    <div class="welcome-text">DansStore</div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1>WELCOME MY WEBSITE</h1>
+        <p>Halo sobat di mana pun kalian berada tetap semangat dalam menjalankan jual beli (JB), dan tetap amanah jangan ngerip.</p>
+        <h5>-SALAM AMANAH-</h5>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Photo Gallery Section -->
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="jy.jpg" alt="Photo 1">
+        </div>
+        <div class="gallery-item">
+            <img src="lol.jpg" alt="Photo 2">
+        </div>
+        <div class="gallery-item">
+            <img src="sam.jpg" alt="Photo 3">
+        </div>
+        <div class="gallery-item">
+            <img src="pay.jpg" alt="Photo 4">
+        </div>
+        <div class="gallery-item">
+            <img src="rabit.jpg" alt="Photo 5">
+        </div>
+        <div class="gallery-item">
+            <img src="jy.jpg" alt="Photo 6">
+        </div>
+    </div>
+
+    <!-- Modal for Image Zoom -->
+    <div class="modal" id="modal">
+        <img id="modal-image" src="" alt="Zoomed Image">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 My Website. DANS CORPORATION.</p>
+    </footer>
+
+    <script>
+        // Toggle menu for mobile view
+        document.addEventListener("DOMContentLoaded", function() {
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav");
+
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("menu-active");
+        });
+        });
+
+        // Image gallery click event
+        document.querySelectorAll('.gallery-item img').forEach(image => {
+            image.addEventListener('click', function() {
+                const modal = document.getElementById('modal');
+                const modalImage = document.getElementById('modal-image');
+                modalImage.src = this.src;
+                modal.classList.add('active');
+            });
+        });
+
+        // Close modal when clicked
+        document.getElementById('modal').addEventListener('click', function() {
+            this.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
